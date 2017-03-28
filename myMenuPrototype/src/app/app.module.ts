@@ -1,9 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
+import { RestaurantsPage } from '../pages/restaurants/restaurants';
+import { RestaurantMenuPage } from '../pages/restaurant-menu/restaurant-menu';
+import { MenuItemDetailsPage } from '../pages/menu-item-details/menu-item-details';
+
+import { GithubUsers } from '../providers/github-users';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -11,9 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
+    RestaurantsPage,
+    RestaurantMenuPage,
+    MenuItemDetailsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -21,13 +24,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
+    RestaurantsPage,
+    RestaurantMenuPage,
+    MenuItemDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GithubUsers,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
