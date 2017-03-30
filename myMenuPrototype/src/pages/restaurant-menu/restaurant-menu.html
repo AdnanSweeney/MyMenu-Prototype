@@ -7,13 +7,113 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RestaurantMenu</ion-title>
+    <ion-title>Menu for {{ login | uppercase | slice:0:1}}{{ login | slice:1:login.length}}'s Restaurant</ion-title>
   </ion-navbar>
-
+<div>
+    <ion-segment [(ngModel)]="food" color="primary">
+      <ion-segment-button value="Appetizers">
+        Appetizers
+      </ion-segment-button>
+      <ion-segment-button value="Entrees">
+        Entrees
+      </ion-segment-button>
+      <ion-segment-button value="Desserts">
+        Desserts
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-header>
 
 
 <ion-content padding >
+
+
+
+<div [ngSwitch]="food">
+
+  <ion-list *ngSwitchCase="'Appetizers'">
+      <ion-card *ngFor="let MenuItem of appetizers" >
+          <img [src]="MenuItem.imgSrc">
+        <ion-card-content>
+          <ion-card-title> {{MenuItem.name}}</ion-card-title>
+        </ion-card-content>
+         <ion-row no-padding>
+          <ion-col text-left>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon *ngFor="let number of MenuItem.rating" name='star'></ion-icon>
+        </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-left>
+          ${{MenuItem.price}}
+        </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Entrees'">
+      <ion-card *ngFor="let MenuItem of entrees" >
+          <img [src]="MenuItem.imgSrc">
+        <ion-card-content>
+          <ion-card-title> {{MenuItem.name}}</ion-card-title>
+        </ion-card-content>
+         <ion-row no-padding>
+          <ion-col text-left>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon *ngFor="let number of MenuItem.rating" name='star'></ion-icon>
+        </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-left>
+          ${{MenuItem.price}}
+        </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Desserts'">
+      <ion-card *ngFor="let MenuItem of desserts" >
+          <img [src]="MenuItem.imgSrc">
+        <ion-card-content>
+          <ion-card-title> {{MenuItem.name}}</ion-card-title>
+        </ion-card-content>
+         <ion-row no-padding>
+          <ion-col text-left>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon *ngFor="let number of MenuItem.rating" name='star'></ion-icon>
+        </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-left>
+          ${{MenuItem.price}}
+        </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+    </div>
+
+
   <ion-list>
     <ion-item>
       <ion-label>Followers</ion-label>
