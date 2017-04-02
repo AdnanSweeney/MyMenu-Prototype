@@ -6,6 +6,8 @@ import { MenuItem } from '../../models/menuItem';
 
 import { GithubUsers } from '../../providers/github-users';
 
+import { MenuItemDetailsPage } from '../menu-item-details/menu-item-details';
+
 /*
   Generated class for the RestaurantMenu page.
 
@@ -26,10 +28,7 @@ export class RestaurantMenuPage {
 
    constructor(public navCtrl: NavController, private navParams: NavParams, private githubUsers: GithubUsers) {
     this.login = navParams.get('login');
-    githubUsers.loadDetails(this.login).subscribe(user => {
-      this.user = user;
-      
-      this.appetizers = [ 
+    this.appetizers = [ 
         
         new MenuItem('Calamari',
                      'https://goo.gl/DwQYjR',
@@ -51,7 +50,7 @@ export class RestaurantMenuPage {
                      'https://goo.gl/7MVqNA',
                      [1,2,3,4],35,9.99,['Garlic', 'Shrimp', 'Tomato', 'Shrimp Sauce'])
 
-      ]   
+      ]  ; 
 
       this.entrees = [
 
@@ -75,7 +74,7 @@ export class RestaurantMenuPage {
                      'https://goo.gl/bz2Uoh',
                      [1,2,3,4],35,9.99,['BBQ Sauce', 'AAA Prime Canadian Beef', 'Black Peppercorns', 'Cream Sauce'])
 
-      ]  
+      ] ; 
 
       this.desserts = [
 
@@ -95,10 +94,21 @@ export class RestaurantMenuPage {
                      'https://goo.gl/uBlznq',
                      [1,2,3,4],28,10.99,['Cream Cheese', 'Graham Crackers', 'Sugar', 'Strawberry']),
 
-      ]                                           
+      ]  ;
+
+    githubUsers.loadDetails(this.login).subscribe(user => {
+      this.user = user;
+      
+                                               
 
 
 
-    })
+    }
+    
+    )
+  }
+
+  goToDetails(menuItem: MenuItem) {
+    this.navCtrl.push(MenuItemDetailsPage, {menuItem});
   }
 }

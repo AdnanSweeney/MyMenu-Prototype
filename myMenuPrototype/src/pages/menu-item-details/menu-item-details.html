@@ -1,18 +1,55 @@
-<!--
-  Generated template for the MenuItemDetails page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>MenuItemDetails</ion-title>
+    <ion-title>Details</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <h1>{{menuItem.name}}</h1>
+  <img [src]="menuItem.imgSrc">
+
+  <ion-row no-padding>
+          <ion-col text-left>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon *ngFor="let number of menuItem.rating" name='star'></ion-icon>
+        </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-left>
+          ${{menuItem.price}}
+        </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+          </ion-col>
+          </ion-row>
+          <ion-row no-padding>
+            <ion-col text-left i>
+              placeholder
+            </ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col> 
+          </ion-row>
+
+          <ion-item *ngFor="let ingredient of menuItem.ingredients">
+    <h2>{{ingredient}}</h2>
+    <p>50g</p>
+    <!--<p>{{ingredients.ingredient}}</p>-->
+  </ion-item>
+              
+
+
+
+
+  <h4>
+    {{menuItem.price}}
+  </h4>
+
+  <p>
+    {{menuItem.rating}}
+  </p>
 
 </ion-content>

@@ -32,7 +32,7 @@
 <div [ngSwitch]="food">
 
   <ion-list *ngSwitchCase="'Appetizers'">
-      <ion-card *ngFor="let MenuItem of appetizers" >
+      <ion-card *ngFor="let MenuItem of appetizers" (click)="goToDetails(MenuItem)">
           <img [src]="MenuItem.imgSrc">
         <ion-card-content>
           <ion-card-title> {{MenuItem.name}}</ion-card-title>
@@ -59,7 +59,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'Entrees'">
-      <ion-card *ngFor="let MenuItem of entrees" >
+      <ion-card *ngFor="let MenuItem of entrees" (click)="goToDetails(entrees.menuItem)">
           <img [src]="MenuItem.imgSrc">
         <ion-card-content>
           <ion-card-title> {{MenuItem.name}}</ion-card-title>
@@ -86,7 +86,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'Desserts'">
-      <ion-card *ngFor="let MenuItem of desserts" >
+      <ion-card *ngFor="let MenuItem of desserts" (click)="goToDetails(desserts.menuItem)">
           <img [src]="MenuItem.imgSrc">
         <ion-card-content>
           <ion-card-title> {{MenuItem.name}}</ion-card-title>
